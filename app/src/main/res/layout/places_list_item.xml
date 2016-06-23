@@ -6,8 +6,8 @@
 
     <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/placeImage"/>
+            android:layout_height="75dp"
+            android:id="@+id/placeImage" android:src="@drawable/boxing_gym"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:id="@+id/headerLayout"
+            android:background="@color/colorPrimary" android:orientation="horizontal" android:gravity="center_vertical">
+
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/home"
+                android:id="@+id/home" android:layout_weight=".25" android:textAlignment="center"
+                android:gravity="center_vertical" android:background="@color/colorPrimaryDark"
+                android:textColor="#ffffff"/>
+        <ImageView
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/line" android:background="#eeeeee"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/recommendations"
+                android:id="@+id/recommedations" android:layout_weight=".50" android:textAlignment="center"
+                android:gravity="center_vertical" android:textColor="#ffffff"/>
+        <ImageView
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/line2" android:background="#eeeeee"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/history"
+                android:id="@+id/history" android:layout_weight=".25" android:textAlignment="center"
+                android:gravity="center_vertical" android:textColor="#ffffff"/>
+    </LinearLayout>
+
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/visitsList"/>
+</LinearLayout>

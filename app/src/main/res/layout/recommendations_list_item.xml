@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productImage" android:src="@drawable/product"/>
+    <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="EVERLAST PROTEX 2 TRAINING GLOVES"
+            android:id="@+id/productTitle" android:singleLine="false" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="$ 35.20"
+            android:id="@+id/productPrice" android:gravity="center_horizontal"/>
+</LinearLayout>

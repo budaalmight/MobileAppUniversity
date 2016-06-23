@@ -3,27 +3,73 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:padding="10dp">
+              android:padding="10dp" android:gravity="center_horizontal">
 
     <ImageView
             android:layout_width="100dp"
             android:layout_height="150dp"
             android:id="@+id/loginLogo" android:layout_gravity="center_horizontal"
             android:src="@drawable/logo"/>
-    <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/loginEmail" android:hint="Email"/>
-    <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/loginPassword" android:hint="Password"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="51dip"
+            android:id="@+id/login_LinearLayout"
+            android:layout_marginBottom="20dip"
+            android:background="#e6e6e6">
+
+        <ImageView
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:id="@+id/login_user_icon"
+                android:src="@drawable/login_user_icon_gray"
+                android:padding="7dip"
+                android:background="#ffffff"/>
+
+        <EditText
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/login_user_textEdit"
+                android:background="#F5F5F5"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:hint="@string/email_placeholder" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="51dip"
+            android:id="@+id/login_LinearLayout2"
+            android:layout_marginBottom="20dip"
+            android:background="#e6e6e6">
+
+        <ImageView
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:id="@+id/login_password_icon"
+                android:src="@drawable/login_password_icon_gray"
+                android:padding="7dip"
+                android:background="#ffffff" />
+
+        <EditText
+                android:layout_width="200dip"
+                android:layout_height="50dip"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/login_password_textEdit"
+                android:background="#F5F5F5"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:hint="@string/password_placeholder" />
+    </LinearLayout>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/login_button"
             android:id="@+id/loginButton" android:layout_gravity="center_horizontal" android:textColor="#ffffff"
             android:background="@color/colorPrimaryDark"/>
 </LinearLayout>

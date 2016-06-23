@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">MobileAppUni</string>
+    <string name="app_name">SportMore</string>
     <string name="action_settings">Settings</string>
+    <string name="email_placeholder">Email</string>
+    <string name="password_placeholder">Password</string>
+    <string name="login_button">Login</string>
+    <string name="home">Home</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="history">History</string>
 </resources>
