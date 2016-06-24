@@ -14,6 +14,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends Activity {
@@ -35,19 +37,19 @@ public class LoginActivity extends Activity {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
-                                client.getProduct(getApplicationContext(), response.getString("token_type") + " " + response.getString("access_token"), new JsonHttpResponseHandler() {
-                                    @Override
-                                    public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                                        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-                                        SQLiteDatabase database = databaseHelper.getWritableDatabase();
-                                        ContentValues values = new ContentValues();
-                                        database.insert("USER", null,values);
-                                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                                        startActivity(intent);
 
-                                    }
+                                DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+                                SQLiteDatabase database = databaseHelper.getWritableDatabase();
+                                ContentValues values = new ContentValues();
+                                values.put("USERNAME",username.getText().toString());
+                                values.put("PASSWORD",password.getText().toString());
+                                values.put("TOKEN",response.getString("access_token"));
+                                values.put("LAST",new Date().toString());
+                                database.insert("USER", null,values);
+                                database.close();
+                                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                                startActivity(intent);
 
-                                });
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
