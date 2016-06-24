@@ -12,6 +12,7 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.places_list);
-        ListView places = (ListView) findViewById(R.layout.places_list);
+        ListView places = (ListView) findViewById(R.id.visitsList);
+
     }
 }
