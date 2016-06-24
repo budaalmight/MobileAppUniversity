@@ -16,7 +16,7 @@
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/home"
-                android:id="@+id/home" android:layout_weight=".25" android:textAlignment="center"
+                android:id="@+id/home" android:layout_weight=".20" android:textAlignment="center"
                 android:gravity="center_vertical" android:background="@color/colorPrimaryDark"
                 android:textColor="#ffffff"/>
         <ImageView
@@ -28,7 +28,7 @@
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/recommendations"
-                android:id="@+id/recommedations" android:layout_weight=".50" android:textAlignment="center"
+                android:id="@+id/recommedations" android:layout_weight=".55" android:textAlignment="center"
                 android:gravity="center_vertical" android:textColor="#ffffff"/>
         <ImageView
                 android:layout_width="1dp"
