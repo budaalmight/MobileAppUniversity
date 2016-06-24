@@ -36,12 +36,19 @@
                 android:layout_alignParentStart="true" android:src="@drawable/product200x200"/>
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="$ 35.20"
                 android:id="@+id/productPrice" android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/mainImage" android:layout_toEndOf="@+id/mainImage"
                 android:gravity="center" android:layout_marginLeft="20dip"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUY"
+                android:id="@+id/buyButton"
+                android:layout_below="@+id/productPrice" android:layout_alignLeft="@+id/productPrice"
+                android:background="@color/colorAccent" android:textColor="#ffffff" android:textSize="20dp"/>
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
