@@ -26,25 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final YaasRestClient client = new YaasRestClient();
-        client.getToken(getApplicationContext(), new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    client.getProduct(getApplicationContext(), response.getString("token_type") + " " + response.getString("access_token"), new JsonHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject json) {
-                            System.out.println(json.toString());
-                            System.out.println();
-                        }
-
-                    });
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
