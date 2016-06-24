@@ -30,7 +30,7 @@ public class LoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!username.getText().toString().equals("") && password.getText().toString().equals("")) {
+                if (!username.getText().toString().equals("") && !password.getText().toString().equals("")) {
                     final YaasRestClient client = new YaasRestClient();
                     client.getToken(getApplicationContext(), new JsonHttpResponseHandler() {
 

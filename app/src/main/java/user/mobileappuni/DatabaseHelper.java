@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXIST USER (USERNAME TEXT , PASSWORD TEXT , TOKEN TEXT , LAST TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS USER (USERNAME TEXT , PASSWORD TEXT , TOKEN TEXT , LAST TEXT)");
     }
 
     @Override
