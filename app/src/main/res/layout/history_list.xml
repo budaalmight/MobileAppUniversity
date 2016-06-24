@@ -28,7 +28,7 @@
                 android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/recommendations"
-                android:id="@+id/recommedations" android:layout_weight=".55" android:textAlignment="center"
+                android:id="@+id/recommendations" android:layout_weight=".55" android:textAlignment="center"
                 android:gravity="center_vertical"
                 android:textColor="#ffffff"/>
         <ImageView
