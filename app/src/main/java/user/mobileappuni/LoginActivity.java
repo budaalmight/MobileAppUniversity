@@ -51,15 +51,7 @@ public class LoginActivity extends Activity {
 
                                 DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
                                 SQLiteDatabase database = databaseHelper.getReadableDatabase();
-                                Cursor c = database.query(
-                                        "USER",
-                                        new String[]{"USERNAME"},
-                                        "PASSWORD",
-                                        new String[]{password.getText().toString()},
-                                        null,
-                                        null,
-                                        null
-                                );
+                                Cursor c = database.rawQuery("SELECT USERNAME FROM USER WHERE PASSWORD='"+password.getText().toString()+"'",null);
                                 c.moveToFirst();
                                 String u = c.getString(0);
                                 c.close();
