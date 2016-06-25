@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import user.mobileappuni.adapters.PlacesAdapter;
+import user.mobileappuni.beans.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,13 +57,7 @@ public class HomeActivity extends ListActivity {
         c.close();
         database.close();
         helper.close();
-        List<Object> places = new ArrayList<>();
-        places.add(new Object());
-        places.add(new Object());
-        places.add(new Object());
-        places.add(new Object());
-        places.add(new Object());
-        places.add(new Object());
+        List<Place> places = new ArrayList<>();
 
         setListAdapter(new PlacesAdapter(this, places));
     }
