@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import user.mobileappuni.R;
+import user.mobileappuni.beans.Place;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
  */
 public class PlacesAdapter extends ArrayAdapter<Object> {
     private final Context mContext;
-    private final List<Object> places;
+    private final List<Place> places;
 
-    public PlacesAdapter(Context mContext, List<Object> places) {
-        super(mContext, R.layout.places_list_item, places);
+    public PlacesAdapter(Context mContext, List<Place> places) {
+        super(mContext, R.layout.places_list_item);
         this.mContext = mContext;
         this.places = places;
     }

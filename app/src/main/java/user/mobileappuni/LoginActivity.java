@@ -3,6 +3,7 @@ package user.mobileappuni;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,16 @@ import java.util.Date;
 import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends Activity {
+
+    private static String token;
+
+    private static synchronized void setToken(String t){
+        token = t;
+    }
+
+    public static synchronized String getToken(){
+        return token;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +50,26 @@ public class LoginActivity extends Activity {
                             try {
 
                                 DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-                                SQLiteDatabase database = databaseHelper.getWritableDatabase();
-                                ContentValues values = new ContentValues();
-                                values.put("USERNAME",username.getText().toString());
-                                values.put("PASSWORD",password.getText().toString());
-                                values.put("TOKEN",response.getString("access_token"));
-                                values.put("LAST",new Date().toString());
-                                database.insert("USER", null,values);
+                                SQLiteDatabase database = databaseHelper.getReadableDatabase();
+                                Cursor c = database.query(
+                                        "USER",
+                                        new String[]{"USERNAME"},
+                                        "PASSWORD",
+                                        new String[]{password.getText().toString()},
+                                        null,
+                                        null,
+                                        null
+                                );
+                                c.moveToFirst();
+                                String u = c.getString(0);
+                                c.close();
                                 database.close();
-                                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                                startActivity(intent);
+                                databaseHelper.close();
+                                if(u.equals(username.getText().toString())) {
+                                    setToken(response.getString("access_token"));
+                                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                                    startActivity(intent);
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
