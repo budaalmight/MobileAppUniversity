@@ -9,6 +9,13 @@ public class Product {
     private String description;
     private String price;
 
+    public Product(String id, String name, String description, String price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
     public String getId() {
         return id;
     }

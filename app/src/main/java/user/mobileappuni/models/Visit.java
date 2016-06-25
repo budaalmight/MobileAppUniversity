@@ -11,6 +11,13 @@ public class Visit {
     private String place;
     private Date date;
 
+    public Visit(String user, String sport, String place, Date date) {
+        this.user = user;
+        this.sport = sport;
+        this.place = place;
+        this.date = date;
+    }
+
     public String getUser() {
         return user;
     }

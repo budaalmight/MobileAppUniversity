@@ -9,10 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 import user.mobileappuni.adapters.PlacesAdapter;
-import user.mobileappuni.beans.Place;
+import user.mobileappuni.models.Place;
 
 import java.util.ArrayList;
 import java.util.List;
