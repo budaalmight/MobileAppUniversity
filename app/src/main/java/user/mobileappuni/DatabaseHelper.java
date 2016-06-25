@@ -13,6 +13,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS USER (USERNAME TEXT , PASSWORD TEXT , TOKEN TEXT , LAST TEXT)");
+        db.execSQL("INSERT INTO USER(USERNAME , PASSWORD) VALUE('a', 'a')");
+        db.execSQL("INSERT INTO USER(USERNAME , PASSWORD) VALUE('user@test.com', 'password')");
+        db.execSQL("CREATE TABLE IF NOT EXISTS PLACES (NAME TEXT , PIC TEXT , DESCRIPTION TEXT)");
+        db.execSQL("INSERT INTO PLACES(NAME,PIC,DESCRIPTION) VALUES('Pulse','',''),('Boxi Boxi','',''),('Pluv Pluv','',''),('Delfin4eto','','')");
+
     }
 
     @Override
