@@ -68,8 +68,5 @@ public class HomeActivity extends ListActivity {
         helper.close();
 
         setListAdapter(new PlacesAdapter(this, places));
-
-        //TODO: set the most visited sport in the adapter when a visit is added
-        setSport("boxing");
     }
 }
