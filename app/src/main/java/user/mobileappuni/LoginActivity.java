@@ -23,12 +23,22 @@ public class LoginActivity extends Activity {
 
     private static String token;
 
+    private static String username;
+
     private static synchronized void setToken(String t){
         token = t;
     }
 
     public static synchronized String getToken(){
         return token;
+    }
+
+    public static synchronized String getUsername() {
+        return username;
+    }
+
+    private static synchronized void setUsername(String username) {
+        LoginActivity.username = username;
     }
 
     @Override
@@ -51,13 +61,15 @@ public class LoginActivity extends Activity {
 
                                 DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
                                 SQLiteDatabase database = databaseHelper.getReadableDatabase();
-                                Cursor c = database.rawQuery("SELECT USERNAME FROM USER WHERE PASSWORD='"+password.getText().toString()+"'",null);
+                                Cursor c = database.rawQuery("SELECT USERNAME FROM USER WHERE PASSWORD='"
+                                        +password.getText().toString()+"' AND USERNAME='"+ username.getText().toString() +"'",null);
                                 c.moveToFirst();
                                 String u = c.getString(0);
                                 c.close();
                                 database.close();
                                 databaseHelper.close();
                                 if(u.equals(username.getText().toString())) {
+                                    setUsername(username.getText().toString());
                                     setToken(response.getString("access_token"));
                                     Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                                     startActivity(intent);

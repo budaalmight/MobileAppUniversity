@@ -32,26 +32,32 @@ public class YaasRestClient {
         params.add("scope", "hybris.document_manage hybris.document_view");
         BasicHeader header = new BasicHeader("Content-Type", "application/x-www-form-urlencoded");
         BasicHeader[] headers = {header};
-        client.post(context, buildUrl("oauth2/v1/token"), headers, params, null,handler);
+        client.post(context, buildUrl("oauth2/v1/token"), headers, params, null, handler);
     }
 
     public void getProduct(Context context, String token, AsyncHttpResponseHandler handler) {
-        BasicHeader header = new BasicHeader("Authorization","Bearer " + token);
+        BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         BasicHeader[] headers = {header};
-        client.get(context, buildUrl("category/v1/helloyaas1/categories?expand=assignments"), headers, new RequestParams(),handler);
+        client.get(context, buildUrl("category/v1/helloyaas1/categories?expand=assignments"), headers, new RequestParams(), handler);
     }
-    public void getVisits(Context context,String token, AsyncHttpResponseHandler handler){
-        BasicHeader header = new BasicHeader("Authorization","Bearer " + token);
+
+    public void getVisits(Context context, String token, AsyncHttpResponseHandler handler, String sport) {
+        BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
+        RequestParams params = new RequestParams();
+        params.put("user", LoginActivity.getUsername());
+        params.put("sport", sport);
+        client.get(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header}, params, handler);
     }
-    public void addVisit(Context context, String token, AsyncHttpResponseHandler handler,String username,String sport,String place){
+
+    public void addVisit(Context context, String token, AsyncHttpResponseHandler handler, String username, String sport, String place) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer" + token);
         BasicHeader metadata = new BasicHeader("hybris-metaData", "date:date");
         RequestParams params = new RequestParams();
         params.put("user", username);
-                params.put("sport", sport);
-                params.put("place", place);
-                params.put("date", format.format(new Date()));
-        client.post(context,buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"),new Header[]{header,metadata},params,"application/json",handler);
+        params.put("sport", sport);
+        params.put("place", place);
+        params.put("date", format.format(new Date()));
+        client.post(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header, metadata}, params, "application/json", handler);
     }
 
     private static String buildUrl(String url) {
