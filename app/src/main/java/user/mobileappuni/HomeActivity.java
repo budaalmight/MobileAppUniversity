@@ -5,22 +5,30 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
-
 import user.mobileappuni.adapters.PlacesAdapter;
 import user.mobileappuni.models.Place;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by kanch on 6/24/2016.
  */
 public class HomeActivity extends ListActivity {
+    private static String sport;
+
+    public static String getSport() {
+        return sport;
+    }
+
+    public static void setSport(String sport) {
+        HomeActivity.sport = sport;
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +53,14 @@ public class HomeActivity extends ListActivity {
             }
         });
 
-        List<Place> places = new ArrayList<>();
+        ArrayList<Place> places = new ArrayList<>();
         DatabaseHelper helper = new DatabaseHelper(this);
         SQLiteDatabase database = helper.getReadableDatabase();
         Cursor c = database.rawQuery("SELECT * FROM PLACES", null);
-        c.moveToFirst();
-        Place place = new Place(c.getString(0), getResources().getDrawable(getResources()
-                .getIdentifier(c.getString(1), "drawable", getPackageName()), null), c.getString(2), c.getString(3));
-        places.add(place);
+        Place place;
         while(c.moveToNext()){
-            place = new Place(c.getString(0), getResources().getDrawable(getResources()
-                    .getIdentifier(c.getString(1), "drawable", getPackageName()), null), c.getString(2), c.getString(3));
+            int drawableId = getResources().getIdentifier(c.getString(1), "drawable", getPackageName());
+            place = new Place(c.getString(0), ContextCompat.getDrawable(this, drawableId), c.getString(2), c.getString(3));
             places.add(place);
         }
         c.close();
@@ -63,5 +68,8 @@ public class HomeActivity extends ListActivity {
         helper.close();
 
         setListAdapter(new PlacesAdapter(this, places));
+
+        //TODO: set the most visited sport in the adapter when a visit is added
+        setSport("boxing");
     }
 }

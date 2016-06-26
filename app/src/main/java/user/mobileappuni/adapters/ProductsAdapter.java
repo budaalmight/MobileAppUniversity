@@ -59,8 +59,6 @@ public class ProductsAdapter extends BaseAdapter {
 
             TextView productPrice = (TextView) gridView.findViewById(R.id.productPrice);
             productPrice.setText(product.getPrice());
-
-            //TODO: Add logic for what will happen when a product is clicked
         } else {
             gridView = (View) convertView;
         }

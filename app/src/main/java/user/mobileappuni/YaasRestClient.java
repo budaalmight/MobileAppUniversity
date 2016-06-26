@@ -1,19 +1,15 @@
 package user.mobileappuni;
 
 import android.content.Context;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONObject;
-
-import java.security.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.message.BasicHeader;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class YaasRestClient {
 
@@ -35,10 +31,10 @@ public class YaasRestClient {
         client.post(context, buildUrl("oauth2/v1/token"), headers, params, null, handler);
     }
 
-    public void getProduct(Context context, String token, AsyncHttpResponseHandler handler) {
+    public void getProducts(Context context, String token, AsyncHttpResponseHandler handler) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         BasicHeader[] headers = {header};
-        client.get(context, buildUrl("category/v1/helloyaas1/categories?expand=assignments"), headers, new RequestParams(), handler);
+        client.get(context, buildUrl("productdetails/v1/helloyaas1/productdetails"), headers, new RequestParams(),handler);
     }
 
     public void getVisits(Context context, String token, AsyncHttpResponseHandler handler, String sport) {
