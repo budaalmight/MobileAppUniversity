@@ -3,8 +3,10 @@ package user.mobileappuni;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -25,6 +27,17 @@ public class ProductDetailsActivity extends Activity {
             }
         });
 
-        //TODO: get Intent data and render it on the current layout
+        Intent intent = getIntent();
+        ImageView productImage = (ImageView) findViewById(R.id.mainImage);
+        productImage.setImageDrawable(ContextCompat.getDrawable(this, getResources().getIdentifier("m" + intent.getStringExtra("productId"), "drawable", getPackageName())));
+
+        TextView productTitle = (TextView) findViewById(R.id.productTitle);
+        productTitle.setText(intent.getStringExtra("productTitle"));
+
+        TextView productDescription = (TextView) findViewById(R.id.productDescription);
+        productDescription.setText(intent.getStringExtra("productDescription"));
+
+        TextView productPrice = (TextView) findViewById(R.id.productPrice);
+        productPrice.setText(intent.getStringExtra("productPrice"));
     }
 }

@@ -1,17 +1,21 @@
 package user.mobileappuni.models;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by kanch on 6/25/2016.
  */
 public class Product {
     private String id;
     private String name;
+    private Drawable image;
     private String description;
     private String price;
 
-    public Product(String id, String name, String description, String price) {
+    public Product(String id, String name, Drawable image, String description, String price) {
         this.id = id;
         this.name = name;
+        this.image = image;
         this.description = description;
         this.price = price;
     }
@@ -46,5 +50,13 @@ public class Product {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public Drawable getImage() {
+        return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
     }
 }
