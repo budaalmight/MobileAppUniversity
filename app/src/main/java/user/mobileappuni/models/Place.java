@@ -1,4 +1,4 @@
-package user.mobileappuni.beans;
+package user.mobileappuni.models;
 
 import android.graphics.drawable.Drawable;
 
