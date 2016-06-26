@@ -37,7 +37,7 @@ public class YaasRestClient {
         client.get(context, buildUrl("productdetails/v1/helloyaas1/productdetails"), headers, new RequestParams(),handler);
     }
 
-    public void getVisits(Context context, String token, AsyncHttpResponseHandler handler, String sport) {
+    public void getVisits(Context context, String token, String sport, AsyncHttpResponseHandler handler) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         RequestParams params = new RequestParams();
         params.put("user", LoginActivity.getUsername());
@@ -45,7 +45,7 @@ public class YaasRestClient {
         client.get(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header}, params, handler);
     }
 
-    public void addVisit(Context context, String token, AsyncHttpResponseHandler handler, String username, String sport, String place) {
+    public void addVisit(Context context, String token, String username, String sport, String place, AsyncHttpResponseHandler handler) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer" + token);
         BasicHeader metadata = new BasicHeader("hybris-metaData", "date:date");
         RequestParams params = new RequestParams();
