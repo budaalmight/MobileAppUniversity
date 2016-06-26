@@ -7,12 +7,12 @@
     <ImageView
             android:layout_width="100dp"
             android:layout_height="75dp"
-            android:id="@+id/placeImage" android:src="@drawable/boxing_gym"/>
+            android:id="@+id/placeImage" android:src="@drawable/boxing_gym1"/>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="0dp"
+            android:layout_width="175dp"
             android:layout_height="wrap_content" android:layout_marginLeft="3dp" android:layout_marginRight="10dp"
-            android:layout_weight=".40">
+    >
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
