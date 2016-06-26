@@ -1,6 +1,5 @@
 package user.mobileappuni.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,7 +14,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import user.mobileappuni.HomeActivity;
@@ -24,8 +24,6 @@ import user.mobileappuni.OurDialog;
 import user.mobileappuni.R;
 import user.mobileappuni.YaasRestClient;
 import user.mobileappuni.models.Place;
-
-import java.util.ArrayList;
 
 /**
  * Created by kanch on 6/25/2016.
