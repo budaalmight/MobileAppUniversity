@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS USER (USERNAME TEXT , PASSWORD TEXT , TOKEN TEXT , LAST TEXT)");
         db.execSQL("INSERT INTO USER(USERNAME , PASSWORD) VALUES('a', 'a')");
-        db.execSQL("INSERT INTO USER(USERNAME , PASSWORD) VALUES('user@test.com', 'password')");
+        db.execSQL("INSERT INTO USER(USERNAME , PASSWORD) VALUES('user@test.com', 'p')");
         db.execSQL("CREATE TABLE IF NOT EXISTS PLACES (NAME TEXT , PIC TEXT , DESCRIPTION TEXT, SPORT TEXT)");
         db.execSQL("INSERT INTO PLACES(NAME,PIC,DESCRIPTION,SPORT) VALUES('Pulse','boxing_gym1','Tuk ste moderni','Boxing'),('Boxi Boxi','boxing_gym2','Opravqme zubi','Boxing'),('Pluv Pluv','swimming1','Suprotivlenie pod nashata voda = 0','Swimming'),('Delfin4eto','swimming2','Pluvane v salata','Swimming')");
 

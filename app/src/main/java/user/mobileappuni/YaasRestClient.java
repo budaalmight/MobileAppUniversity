@@ -6,15 +6,12 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.message.BasicHeader;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class YaasRestClient {
-
-    JSONObject jsonResponse = null;
-    SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
+    SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
     private static final String basicUrl = "https://api.yaas.io/hybris/";
 
@@ -41,7 +38,9 @@ public class YaasRestClient {
         BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         RequestParams params = new RequestParams();
         params.put("user", LoginActivity.getUsername());
-        params.put("sport", sport);
+        if (sport != null) {
+            params.put("sport", sport);
+        }
         client.get(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header}, params, handler);
     }
 
