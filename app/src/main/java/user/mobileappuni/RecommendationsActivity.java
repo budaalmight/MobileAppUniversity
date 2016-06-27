@@ -60,14 +60,14 @@ public class RecommendationsActivity extends Activity {
                         String productPrice = response.getJSONObject(i).getJSONArray("prices").getJSONObject(0)
                                 .getString("effectiveAmount");
                         product.put("price", productPrice);
-                        if (HomeActivity.getSport() == "boxing" && product.getString("sku").startsWith("1")) {
+                        if (HomeActivity.getSport() == "Boxing" && product.getString("sku").startsWith("1")) {
                             productsForBoxing.put(product);
                         } else {
                             productsForSwimming.put(product);
                         }
                     }
                     final ArrayList<Product> products;
-                    if (HomeActivity.getSport() == "boxing") {
+                    if (HomeActivity.getSport() == "Boxing") {
                         products = getRandomProducts(productsForBoxing);
                     } else {
                         products = getRandomProducts(productsForSwimming);

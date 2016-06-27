@@ -44,10 +44,11 @@ public class YaasRestClient {
     public void getVisits(Context context, String token, String sport, AsyncHttpResponseHandler handler) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         RequestParams params = new RequestParams();
-        params.put("user", LoginActivity.getUsername());
+        String query = "user:" + LoginActivity.getUsername();
         if (sport != null) {
-            params.put("sport", sport);
+            query += " sport:" + sport;
         }
+        params.put("q", query);
         client.get(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header}, params, handler);
     }
 

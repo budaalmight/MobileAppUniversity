@@ -2,6 +2,7 @@ package user.mobileappuni;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,6 +12,7 @@ public class OurDialog extends Activity {
     @Override
     public void onCreate(Bundle save) {
         super.onCreate(save);
+        this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         setContentView(R.layout.dialog_layout);
         Intent intent = getIntent();
         int visits = intent.getIntExtra("visits",1);

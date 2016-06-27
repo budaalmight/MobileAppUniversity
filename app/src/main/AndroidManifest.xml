@@ -33,7 +33,7 @@
             android:name="RecommendationsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OurDialog"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
     </application>
 
 </manifest>

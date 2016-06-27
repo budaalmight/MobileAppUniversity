@@ -24,9 +24,6 @@ import java.util.ArrayList;
  */
 public class HomeActivity extends ListActivity {
     private static String sport;
-    static{
-
-    }
 
     public static String getSport() {
         return sport;
@@ -42,6 +39,7 @@ public class HomeActivity extends ListActivity {
         setContentView(R.layout.places_list);
         final YaasRestClient client = new YaasRestClient();
         final String firstSport = "Boxing";
+        setSport(firstSport);
         final TextView recommendations = (TextView) findViewById(R.id.recommendations);
         client.getVisits(this.getBaseContext(), LoginActivity.getToken(),firstSport , new JsonHttpResponseHandler() {
             @Override
