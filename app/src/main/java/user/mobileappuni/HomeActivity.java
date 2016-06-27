@@ -39,6 +39,7 @@ public class HomeActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.places_list);
         final YaasRestClient client = new YaasRestClient();
         final String firstSport = "Boxing";
         final TextView recommendations = (TextView) findViewById(R.id.recommendations);
@@ -59,14 +60,10 @@ public class HomeActivity extends ListActivity {
                         } else {
                             HomeActivity.setSport(firstSport);
                         }
-                        Intent intent = new Intent(recommendations.getContext(), OurDialog.class);
-                        intent.putExtra("visits", response.length());
-                        recommendations.getContext().startActivity(intent);
                     }
                 });
             }
         });
-        setContentView(R.layout.places_list);
         final TextView history = (TextView) findViewById(R.id.history);
 
         recommendations.setOnClickListener(new View.OnClickListener() {

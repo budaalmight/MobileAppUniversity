@@ -1,12 +1,19 @@
 package user.mobileappuni;
 
 import android.content.Context;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,7 +38,7 @@ public class YaasRestClient {
     public void getProducts(Context context, String token, AsyncHttpResponseHandler handler) {
         BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         BasicHeader[] headers = {header};
-        client.get(context, buildUrl("productdetails/v1/helloyaas1/productdetails"), headers, new RequestParams(),handler);
+        client.get(context, buildUrl("productdetails/v1/helloyaas1/productdetails"), headers, new RequestParams(), handler);
     }
 
     public void getVisits(Context context, String token, String sport, AsyncHttpResponseHandler handler) {
@@ -45,14 +52,23 @@ public class YaasRestClient {
     }
 
     public void addVisit(Context context, String token, String username, String sport, String place, AsyncHttpResponseHandler handler) {
-        BasicHeader header = new BasicHeader("Authorization", "Bearer" + token);
+        BasicHeader header = new BasicHeader("Authorization", "Bearer " + token);
         BasicHeader metadata = new BasicHeader("hybris-metaData", "date:date");
-        RequestParams params = new RequestParams();
-        params.put("user", username);
-        params.put("sport", sport);
-        params.put("place", place);
-        params.put("date", format.format(new Date()));
-        client.post(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header, metadata}, params, "application/json", handler);
+        BasicHeader content = new BasicHeader("Content-Type", "application/json");
+        JSONObject json = new JSONObject();
+        try {
+            json.put("user", username);
+            json.put("sport", sport);
+            json.put("place", place);
+            json.put("date", format.format(new Date()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            client.post(context, buildUrl("document/v1/helloyaas1/helloyaas1.storefront111/data/visits"), new Header[]{header, metadata, content}, new StringEntity(json.toString()), "application/json", handler);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     private static String buildUrl(String url) {

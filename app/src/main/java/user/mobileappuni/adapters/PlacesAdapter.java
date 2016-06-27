@@ -10,10 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -60,9 +62,9 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             @Override
             public void onClick(View v) {
                 final YaasRestClient client = new YaasRestClient();
-                client.addVisit(rowView.getContext(), LoginActivity.getToken(), LoginActivity.getUsername(), place.getSport(), place.getName(), new AsyncHttpResponseHandler() {
+                client.addVisit(getContext(), LoginActivity.getToken(), LoginActivity.getUsername(), place.getSport(), place.getName(), new JsonHttpResponseHandler() {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject responseBody) {
                         client.getVisits(getContext(), LoginActivity.getToken(), place.getSport(), new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, final JSONArray response) {
@@ -90,10 +92,15 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
                             }
                         });
                     }
-
                     @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        System.out.println("something went wrong");
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        System.out.println();
+                    }
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                        System.out.println();
+                    }
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        System.out.println();
                     }
                 });
             }
